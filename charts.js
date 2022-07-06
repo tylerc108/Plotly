@@ -86,7 +86,7 @@ function buildCharts(sample) {
     var yTicks = topTenReversed(otuIds, x => "OTU" + x.toString());
     var xVals = topTenReversed(sampleValues, x => x);
     var hovers = topTenReversed(otuLabels, x => x);
-    var hoversSplit - hovers.map(function(x){
+    var hoversSplit = hovers.map(function(x){
       let arr = x.split(';')
       return (arr[arr.length - 1]);
     });
