@@ -84,7 +84,7 @@ function buildCharts(sample) {
     //  so the otu_ids with the most bacteria are last. 
 
     var yTicks = topTenReversed(otuIds, x => "OTU" + x.toString());
-    var xVals = topTenReversed(sampleValues, x => x);
+    var xValues = topTenReversed(sampleValues, x => x);
     var hovers = topTenReversed(otuLabels, x => x);
     var hoversSplit = hovers.map(function(x){
       let arr = x.split(';')
@@ -93,13 +93,15 @@ function buildCharts(sample) {
 
     // 8. Create the trace for the bar chart. 
     var barData = [{
-      x: xVals
-      y: yVals
+      x: xValues,
+      y: yTicks,
       type: "bar"
     }];
     // 9. Create the layout for the bar chart. 
     var barLayout = {
-      title: "Top 10 Bacteria Found";
+      title: "Top 10 Bacteria Found",
+      xaxis: {title: "Frequency"},
+      yaxis: {title: "Bacteria Class"}
     };
     // 10. Use Plotly to plot the data with the layout. 
     Plotly.newPlot("bar", barData, barLayout);
